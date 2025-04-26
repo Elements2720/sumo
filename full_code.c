@@ -70,18 +70,7 @@ void Rotation180() //180 Degree
 }
 
 void main() {
-  TRISB = 0; // PORTB as Ouput Port
-  do {
-    Rotation0(); //0 Degree
-    Delay_ms(2000);
-    Rotation90(); //90 Degree
-    Delay_ms(2000);
-    Rotation180(); //180 Degree
-  } while (1);
-}
-
-void main() {
-
+    TRISB = 0x00;
     TRISD = 0x00; // Output for motors
     TRISC = 0b10000000; // RC7 input (RX), RC6 output (TX)
     UART1_Init(9600);
@@ -106,6 +95,15 @@ void main() {
                 break;
             case 'S':
                 stop();
+                break;
+            case '0':
+                Rotation0();
+                break;
+            case '1':
+                Rotation90();
+                break;
+            case '2':
+                Rotation180();
                 break;
             }
         }
